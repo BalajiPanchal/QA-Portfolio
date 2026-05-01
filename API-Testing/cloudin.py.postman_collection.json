@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "bd80194b-c2d2-49df-9fae-9ff8b0eb28b1",
+		"name": "cloudin.py",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20250408",
+		"_collection_link": "https://www.postman.com/balajipanchal/cloudin/collection/m0ov7np/cloudin-py?action=share&source=collection_link&creator=20250408"
+	},
+	"item": [
+		{
+			"name": "user-get",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "user-add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Shardul\", \"job\": \"QA Tester\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
