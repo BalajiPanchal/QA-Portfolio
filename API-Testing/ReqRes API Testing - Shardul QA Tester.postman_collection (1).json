@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "1eee644b-985c-4998-a6d8-9bbaee9980df",
+		"name": "ReqRes API Testing - Shardul QA Tester",
+		"description": "API automation collection for ReqRes.in (GET, POST, NEGATIVE TEST).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20250408",
+		"_collection_link": "https://www.postman.com/balajipanchal/cloudin/collection/9zt7skl/reqres-api-testing-shardul-qa-tester?action=share&source=collection_link&creator=20250408"
+	},
+	"item": [
+		{
+			"name": "GET Users - Page 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test('Response contains page = 2', function() {",
+							"    pm.expect(responseJson.page).to.eql(2);",
+							"});",
+							"",
+							"pm.test('Response contains data array', function() {",
+							"    pm.expect(responseJson.data).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create User - Shardul QA Tester",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test('Response has id', function() {",
+							"    pm.expect(responseJson).to.have.property('id');",
+							"});",
+							"",
+							"pm.test('Response has createdAt', function() {",
+							"    pm.expect(responseJson).to.have.property('createdAt');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Shardul\",\n    \"job\": \"QA Tester\"\n}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEGATIVE TEST - GET Non-existent User (ID:23)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
